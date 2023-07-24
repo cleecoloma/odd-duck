@@ -1,7 +1,7 @@
 'use strict';
 
 const products = [];
-let rounds = 5;
+let votes = 5;
 const image1Element = document.getElementById('image1');
 const image2Element = document.getElementById('image2');
 const image3Element = document.getElementById('image3');
@@ -70,7 +70,7 @@ function displayRandomProducts() {
   // console.log(randomProductIndex3);
 }
 
-// let addRound = document.getElementById('rounds').textContent(`${rounds}`);
+// let addRound = document.getElementById('votes').textContent(`${votes}`);
 
 
 // code that runs when a user has voted on a Product
@@ -78,13 +78,14 @@ function handleProductClicks(event) {
   for (let i = 0; i < products.length; i++) {
     if (products[i].name === event.target.alt) {
       products[i].timesClicked++;
-      rounds -= 1;
-      console.log(rounds);
+      votes -= 1;
+      console.log(votes);
+      updateVotes();
     }
   }
   console.log(products);
   displayRandomProducts();
-  if (rounds === 0) {
+  if (votes === 0) {
     imageContainer.removeEventListener('click', handleProductClicks);
     displayResults();
   }
@@ -101,3 +102,12 @@ function displayResults() {
     console.log(products[i].name + ' had ' + products[i].timesClicked + ' votes, and was seen ' + products[i].timesSeen + ' times.')
   }
 }
+
+
+const votesElement = document.getElementById('votes-remaining');
+
+function updateVotes() {
+  return votesElement.textContent = votes;
+}
+
+updateVotes();
