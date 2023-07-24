@@ -1,7 +1,7 @@
 'use strict';
 
 const products = [];
-let votes = 5;
+let votes = 25;
 const image1Element = document.getElementById('image1');
 const image2Element = document.getElementById('image2');
 const image3Element = document.getElementById('image3');
@@ -72,7 +72,6 @@ function displayRandomProducts() {
 
 // let addRound = document.getElementById('votes').textContent(`${votes}`);
 
-
 // code that runs when a user has voted on a Product
 function handleProductClicks(event) {
   for (let i = 0; i < products.length; i++) {
@@ -83,7 +82,7 @@ function handleProductClicks(event) {
       updateVotes();
     }
   }
-  console.log(products);
+  // console.log(products);
   displayRandomProducts();
   if (votes === 0) {
     imageContainer.removeEventListener('click', handleProductClicks);
@@ -93,11 +92,16 @@ function handleProductClicks(event) {
 
 imageContainer.addEventListener('click', handleProductClicks);
 
-
+const resultsElement = document.getElementById('results')
+const resultsDiv = document.getElementById('result-div')
 function displayResults() {
   for (let i = 0; i < products.length; i++) {
-    console.log(products[i].name + ' had ' + products[i].timesClicked + ' votes, and was seen ' + products[i].timesSeen + ' times.')
+    let createParaElement = document.createElement('h4');
+    createParaElement.textContent =
+      `${products[i].name} had ${products[i].timesClicked} votes, and was seen ${products[i].timesSeen} times.`;
+    resultsElement.appendChild(createParaElement);
   }
+  resultsDiv.classList.add('show');
 }
 
 
@@ -108,3 +112,17 @@ function updateVotes() {
 }
 
 updateVotes();
+
+const resultButton = document.getElementById('result-button');
+function handleSubmit(event) {
+  const clickedButton = event.target.parentNode;
+  clickedButton.classList.remove('show');
+  clickedButton.classList.add('hide');
+  results.classList.remove('hide-results');
+  resultsElement.classList.add('show-results');
+}
+resultButton.addEventListener('click', handleSubmit);
+
+
+
+

@@ -31,22 +31,26 @@ header h1 {
 }
 
 img {
-  width: 250px;
+  width: 320px;
   border: thin solid green;
 }
 
-#result-button {
+.hide {
+  display: none;
+}
+
+.show {
   display: flex;
-  /* display: none; */
   height: 24rem;
+  width: 100%;
   justify-content: center;
   align-items: center;
   background-color: hsla(0, 0%, 83%, 0.5);
-  position: relative;
-  bottom: 24rem;
+  position: fixed;
+  top: 15rem;
 }
 
-#result-button button {
+#result-button {
   height: 4rem;
   padding: 1rem;
   width: 9rem;
@@ -58,7 +62,22 @@ img {
   border: none;
 }
 
-#result-button button:hover {
+#result-button:hover {
   background-color: rgb(141, 49, 49);
   transition: 250ms;
+}
+
+.hide-results {
+  display: none;
+}
+
+.show-results {
+  display: block;
+  height: 30rem;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  position: fixed;
+  top: 15rem;
+  z-index: 1;
 }
