@@ -32,7 +32,9 @@ header h1 {
 
 img {
   width: 320px;
+  height: 350px;
   border: thin solid green;
+  object-fit: contain;
 }
 
 .hide {
@@ -41,7 +43,7 @@ img {
 
 .show {
   display: flex;
-  height: 24rem;
+  height: 30rem;
   width: 100%;
   justify-content: center;
   align-items: center;
