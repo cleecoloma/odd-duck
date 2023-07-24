@@ -14,43 +14,58 @@ function Product(name, src) {
   products.push(this);
 }
 
-new Product('bag', 'assets/img/bag.jpg');
-new Product('banana', 'assets/img/banana.jpg');
-new Product('bathroom', 'assets/img/bathroom.jpg');
-new Product('boots', 'assets/img/boots.jpg');
-new Product('breakfast', 'assets/img/breakfast.jpg');
-new Product('bubblegum', 'assets/img/bubblegum.jpg');
-new Product('chair', 'assets/img/chair.jpg');
-new Product('cthulhu', 'assets/img/cthulhu.jpg');
-new Product('dog-duck', 'assets/img/dog-duck.jpg');
-new Product('dragon', 'assets/img/dragon.jpg');
-new Product('pen', 'assets/img/pen.jpg');
-new Product('pet-sweep', 'assets/img/pet-sweep.jpg');
-new Product('scissors', 'assets/img/scissors.jpg');
-new Product('shark', 'assets/img/shark.jpg');
-new Product('sweep', 'assets/img/sweep.jpg');
-new Product('tauntaun', 'assets/img/tauntaun.jpg');
-new Product('unicorn', 'assets/img/unicorn.jpg');
-new Product('water-can', 'assets/img/water-can.jpg');
-new Product('wine-glass', 'assets/img/wine-glass.jpg');
+new Product('bag', 'img/bag.jpg');
+new Product('banana', 'img/banana.jpg');
+new Product('bathroom', 'img/bathroom.jpg');
+new Product('boots', 'img/boots.jpg');
+new Product('breakfast', 'img/breakfast.jpg');
+new Product('bubblegum', 'img/bubblegum.jpg');
+new Product('chair', 'img/chair.jpg');
+new Product('cthulhu', 'img/cthulhu.jpg');
+new Product('dog-duck', 'img/dog-duck.jpg');
+new Product('dragon', 'img/dragon.jpg');
+new Product('pen', 'img/pen.jpg');
+new Product('pet-sweep', 'img/pet-sweep.jpg');
+new Product('scissors', 'img/scissors.jpg');
+new Product('shark', 'img/shark.jpg');
+new Product('sweep', 'img/sweep.png');
+new Product('tauntaun', 'img/tauntaun.jpg');
+new Product('unicorn', 'img/unicorn.jpg');
+new Product('water-can', 'img/water-can.jpg');
+new Product('wine-glass', 'img/wine-glass.jpg');
 
 displayRandomProducts();
-console.log(Products);
+console.log(products);
 
 function displayRandomProducts() {
-  let randomProductIndex1 = Math.floor(Math.random() * Products.length);
-  let randomProductIndex2 = Math.floor(Math.random() * Products.length);
+  let randomProductIndex1 = Math.floor(Math.random() * products.length);
+  let randomProductIndex2 = Math.floor(Math.random() * products.length);
+  let randomProductIndex3 = Math.floor(Math.random() * products.length);
 
-  while (randomProductIndex1 === randomProductIndex2) {
-    randomProductIndex2 = Math.floor(Math.random() * Products.length);
+  while (
+    randomProductIndex1 === randomProductIndex2 &&
+    randomProductIndex1 === randomProductIndex3
+  ) {
+    randomProductIndex2 = Math.floor(Math.random() * products.length);
+    while (randomProductIndex3 === randomProductIndex1 &&
+    randomProductIndex3 === randomProductIndex2) {
+      randomProductIndex3 = Math.floor(Math.random() * products.length);
+    }
   }
 
-  image1Element.src = Products[randomProductIndex1].src;
-  image1Element.alt = Products[randomProductIndex1].name;
-  image2Element.src = Products[randomProductIndex2].src;
-  image2Element.alt = Products[randomProductIndex2].name;
-  Products[randomProductIndex1].timesSeen++;
-  Products[randomProductIndex2].timesSeen++;
+  image1Element.src = products[randomProductIndex1].src;
+  image1Element.alt = products[randomProductIndex1].name;
+  image2Element.src = products[randomProductIndex2].src;
+  image2Element.alt = products[randomProductIndex2].name;
+  image3Element.src = products[randomProductIndex3].src;
+  image3Element.alt = products[randomProductIndex3].name;
+  products[randomProductIndex1].timesSeen++;
+  products[randomProductIndex2].timesSeen++;
+  products[randomProductIndex3].timesSeen++;
+
+  console.log(randomProductIndex1);
+  console.log(randomProductIndex2);
+  console.log(randomProductIndex3);
 }
 
 // code that runs when a user has voted on a Product
@@ -62,9 +77,9 @@ function handleProductClicks(event) {
       Products[i].timesClicked++;
     }
   }
-  console.log(Products);
+  console.log(products);
   displayRandomProducts();
 }
 
-ProductContainer.addEventListener('click', handleProductClicks);
+imageContainer.addEventListener('click', handleProductClicks);
 // ProductContainer.removeEventListener('click', handleProductClicks)
