@@ -43,14 +43,17 @@ function displayRandomProducts() {
   let randomProductIndex3 = Math.floor(Math.random() * products.length);
 
   while (
-    randomProductIndex1 === randomProductIndex2 &&
-    randomProductIndex1 === randomProductIndex3
+    randomProductIndex2 === randomProductIndex1 ||
+    randomProductIndex2 === randomProductIndex3
   ) {
     randomProductIndex2 = Math.floor(Math.random() * products.length);
-    while (randomProductIndex3 === randomProductIndex1 &&
-    randomProductIndex3 === randomProductIndex2) {
-      randomProductIndex3 = Math.floor(Math.random() * products.length);
-    }
+  }
+
+  while (
+    randomProductIndex3 === randomProductIndex1 ||
+    randomProductIndex3 === randomProductIndex2
+  ) {
+    randomProductIndex3 = Math.floor(Math.random() * products.length);
   }
 
   image1Element.src = products[randomProductIndex1].src;
