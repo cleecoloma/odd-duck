@@ -70,6 +70,9 @@ function displayRandomProducts() {
   // console.log(randomProductIndex3);
 }
 
+// let addRound = document.getElementById('rounds').textContent(`${rounds}`);
+
+
 // code that runs when a user has voted on a Product
 function handleProductClicks(event) {
   for (let i = 0; i < products.length; i++) {
@@ -83,10 +86,18 @@ function handleProductClicks(event) {
   displayRandomProducts();
   if (rounds === 0) {
     imageContainer.removeEventListener('click', handleProductClicks);
+    displayResults();
   }
 }
 
 imageContainer.addEventListener('click', handleProductClicks);
 
-// vote();
-// ProductContainer.removeEventListener('click', handleProductClicks)
+// function displayButton(event) {
+
+// }
+
+function displayResults() {
+  for (let i = 0; i < products.length; i++) {
+    console.log(products[i].name + ' had ' + products[i].timesClicked + ' votes, and was seen ' + products[i].timesSeen + ' times.')
+  }
+}

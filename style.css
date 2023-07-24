@@ -4,7 +4,8 @@
 }
 
 header h1 {
-  margin: auto;
+  text-align: center;
+  margin: 2rem 0;
 }
 
 img {
@@ -13,4 +14,9 @@ img {
 
 #image-container {
   display: flex;
+  margin: 2rem 0;
+}
+
+#result-button {
+  text-align: center;
 }
