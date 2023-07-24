@@ -12,12 +12,17 @@ header h1 {
   display: flex;
   text-align: center;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 2rem auto 5rem;
   padding: 1rem;
   width: 8rem;
   background-color: green;
   color: white;
   border-radius: 8px;
+}
+
+#votes:hover {
+  background-color: darkgreen;
+  transition: 250ms;
 }
 
 #image-container {
@@ -33,14 +38,27 @@ img {
 #result-button {
   display: flex;
   /* display: none; */
-  height: 18rem;
+  height: 24rem;
   justify-content: center;
   align-items: center;
-  background-color: hsla(0, 0%, 83%, .5);
+  background-color: hsla(0, 0%, 83%, 0.5);
   position: relative;
-  bottom: 18.75rem;
+  bottom: 24rem;
 }
 
 #result-button button {
-  height: 2rem;
+  height: 4rem;
+  padding: 1rem;
+  width: 9rem;
+  background-color: darkslategray;
+  border-radius: 8px;
+  color: white;
+  font-size: 110%;
+  font-weight: bold;
+  border: none;
+}
+
+#result-button button:hover {
+  background-color: rgb(141, 49, 49);
+  transition: 250ms;
 }
