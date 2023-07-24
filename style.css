@@ -30,7 +30,17 @@ img {
   border: thin solid green;
 }
 
-
 #result-button {
-  text-align: center;
+  display: flex;
+  /* display: none; */
+  height: 18rem;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(0, 0%, 83%, .5);
+  position: relative;
+  bottom: 18.75rem;
+}
+
+#result-button button {
+  height: 2rem;
 }

@@ -93,9 +93,6 @@ function handleProductClicks(event) {
 
 imageContainer.addEventListener('click', handleProductClicks);
 
-// function displayButton(event) {
-
-// }
 
 function displayResults() {
   for (let i = 0; i < products.length; i++) {
