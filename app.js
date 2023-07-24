@@ -1,6 +1,7 @@
 'use strict';
 
 const products = [];
+let rounds = 5;
 const image1Element = document.getElementById('image1');
 const image2Element = document.getElementById('image2');
 const image3Element = document.getElementById('image3');
@@ -55,7 +56,6 @@ function displayRandomProducts() {
   ) {
     randomProductIndex3 = Math.floor(Math.random() * products.length);
   }
-
   image1Element.src = products[randomProductIndex1].src;
   image1Element.alt = products[randomProductIndex1].name;
   image2Element.src = products[randomProductIndex2].src;
@@ -65,24 +65,28 @@ function displayRandomProducts() {
   products[randomProductIndex1].timesSeen++;
   products[randomProductIndex2].timesSeen++;
   products[randomProductIndex3].timesSeen++;
-
-  console.log(randomProductIndex1);
-  console.log(randomProductIndex2);
-  console.log(randomProductIndex3);
+  // console.log(randomProductIndex1);
+  // console.log(randomProductIndex2);
+  // console.log(randomProductIndex3);
 }
 
 // code that runs when a user has voted on a Product
 function handleProductClicks(event) {
-  // console.log(event.target.alt);
-
-  for (let i = 0; i < Products.length; i++) {
-    if (Products[i].name === event.target.alt) {
-      Products[i].timesClicked++;
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].name === event.target.alt) {
+      products[i].timesClicked++;
+      rounds -= 1;
+      console.log(rounds);
     }
   }
   console.log(products);
   displayRandomProducts();
+  if (rounds === 0) {
+    imageContainer.removeEventListener('click', handleProductClicks);
+  }
 }
 
 imageContainer.addEventListener('click', handleProductClicks);
+
+// vote();
 // ProductContainer.removeEventListener('click', handleProductClicks)

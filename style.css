@@ -1,0 +1,16 @@
+* {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: auto;
+}
+
+img {
+  width: 250px;
+}
+
+#image-container {
+  display: flex;
+}
