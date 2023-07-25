@@ -1,7 +1,7 @@
 'use strict';
 
 const products = [];
-let votes = 5;
+let votes = 25;
 const image1Element = document.getElementById('image1');
 const image2Element = document.getElementById('image2');
 const image3Element = document.getElementById('image3');

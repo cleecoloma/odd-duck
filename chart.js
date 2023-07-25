@@ -18,12 +18,12 @@ function createVoteChart() {
       labels: productName,
       datasets: [
         {
-          label: '# of Votes',
+          label: 'Vote Count',
           data: totalVotes,
           borderWidth: 1,
         },
         {
-          label: '# Shown',
+          label: 'Shown Count',
           data: totalSeen,
           borderWidth: 1,
         },
