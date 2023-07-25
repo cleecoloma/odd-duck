@@ -38,6 +38,7 @@ new Product('wine-glass', 'img/wine-glass.jpg');
 displayRandomProducts();
 console.log(products);
 
+// creates a 3 random numbers
 function displayRandomProducts() {
   let randomProductIndex1 = Math.floor(Math.random() * products.length);
   let randomProductIndex2 = Math.floor(Math.random() * products.length);
@@ -65,12 +66,7 @@ function displayRandomProducts() {
   products[randomProductIndex1].timesSeen++;
   products[randomProductIndex2].timesSeen++;
   products[randomProductIndex3].timesSeen++;
-  // console.log(randomProductIndex1);
-  // console.log(randomProductIndex2);
-  // console.log(randomProductIndex3);
 }
-
-// let addRound = document.getElementById('votes').textContent(`${votes}`);
 
 // code that runs when a user has voted on a Product
 function handleProductClicks(event) {
@@ -94,6 +90,8 @@ imageContainer.addEventListener('click', handleProductClicks);
 
 const resultsElement = document.getElementById('results')
 const resultsDiv = document.getElementById('result-div')
+
+// displays the results upon clicking the View Results button
 function displayResults() {
   for (let i = 0; i < products.length; i++) {
     let createParaElement = document.createElement('h4');
@@ -107,6 +105,7 @@ function displayResults() {
 
 const votesElement = document.getElementById('votes-remaining');
 
+// updated the remaining votes depending on the votes variable
 function updateVotes() {
   return votesElement.textContent = votes;
 }
@@ -114,11 +113,13 @@ function updateVotes() {
 updateVotes();
 
 const resultButton = document.getElementById('result-button');
+
+// handles the hiding and showing div for the results.
 function handleSubmit(event) {
   const clickedButton = event.target.parentNode;
   clickedButton.classList.remove('show');
   clickedButton.classList.add('hide');
-  results.classList.remove('hide-results');
+  resultsElement.classList.remove('hide-results');
   resultsElement.classList.add('show-results');
 }
 resultButton.addEventListener('click', handleSubmit);

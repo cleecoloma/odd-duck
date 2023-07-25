@@ -20,11 +20,6 @@ header h1 {
   border-radius: 8px;
 }
 
-/* #votes:hover {
-  background-color: darkgreen;
-  transition: 250ms;
-} */
-
 #image-container {
   display: flex;
   margin: 2rem 0;
