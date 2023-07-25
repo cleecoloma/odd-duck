@@ -38,11 +38,3 @@ function createVoteChart() {
     },
   });
 }
-
-// resultButton.addEventListener('click', function () {
-//   const resultsElement = document.getElementById('results');
-//   clickedButton.classList.remove('show');
-//   resultsElement.classList.remove('hide-results');
-//   resultsElement.classList.add('show-results');
-//   createVoteChart();
-// });
