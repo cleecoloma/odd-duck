@@ -2,11 +2,11 @@
 
 const chartCanvas = document.getElementById('myChart');
 
-function createVoteChart() {
-  const productName = [];
-  const totalVotes = [];
-  const totalSeen = [];
+const productName = [];
+const totalVotes = [];
+const totalSeen = [];
 
+function createVoteChart() {
   for (let i = 0; i < products.length; i++) {
     let currentProduct = products[i];
     productName.push(currentProduct[i].name);
@@ -40,3 +40,5 @@ new Chart(chartCanvas, {
     },
   },
 });
+
+chartCanvas.addEventListener('click', createVoteChart);
