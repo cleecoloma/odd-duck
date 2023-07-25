@@ -93,12 +93,14 @@ const resultsDiv = document.getElementById('result-div')
 
 // displays the results upon clicking the View Results button
 function displayResults() {
-  for (let i = 0; i < products.length; i++) {
-    let createParaElement = document.createElement('h4');
-    createParaElement.textContent =
-      `${products[i].name} had ${products[i].timesClicked} votes, and was seen ${products[i].timesSeen} times.`;
-    resultsElement.appendChild(createParaElement);
-  }
+  // for (let i = 0; i < products.length; i++) {
+  //   let createParaElement = document.createElement('h4');
+  //   createParaElement.textContent =
+  //     `${products[i].name} had ${products[i].timesClicked} votes, and was seen ${products[i].timesSeen} times.`;
+  //   resultsElement.appendChild(createParaElement);
+  // }
+  //  createVoteChart();
+  resultsDiv.classList.remove('hide');
   resultsDiv.classList.add('show');
 }
 
@@ -118,9 +120,9 @@ const resultButton = document.getElementById('result-button');
 function handleSubmit(event) {
   const clickedButton = event.target.parentNode;
   clickedButton.classList.remove('show');
-  clickedButton.classList.add('hide');
   resultsElement.classList.remove('hide-results');
   resultsElement.classList.add('show-results');
+  createVoteChart();
 }
 resultButton.addEventListener('click', handleSubmit);
 
