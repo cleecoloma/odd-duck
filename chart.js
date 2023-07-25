@@ -21,11 +21,15 @@ function createVoteChart() {
           label: 'Vote Count',
           data: totalVotes,
           borderWidth: 1,
+          borderColor: '#2F89FC',
+          backgroundColor: '#2F89FC',
         },
         {
           label: 'Shown Count',
           data: totalSeen,
           borderWidth: 1,
+          borderColor: '#01937C',
+          backgroundColor: '#01937C',
         },
       ],
     },
@@ -33,6 +37,15 @@ function createVoteChart() {
       scales: {
         y: {
           beginAtZero: true,
+          ticks: {
+            stepSize: 1,
+          },
+        },
+        x: {
+          ticks: {
+            maxRotation: 90,
+            minRotation: 90,
+          },
         },
       },
     },
