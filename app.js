@@ -1,11 +1,20 @@
 'use strict';
 
 const products = [];
-let votes = 25;
+let votes = 12;
 const image1Element = document.getElementById('image1');
 const image2Element = document.getElementById('image2');
 const image3Element = document.getElementById('image3');
 const imageContainer = document.getElementById('image-container');
+const resultsElement = document.getElementById('results');
+const resultsDiv = document.getElementById('result-div');
+const resultButton = document.getElementById('result-button');
+const votesElement = document.getElementById('votes-remaining');
+const currentNumbers = [
+  Math.floor(Math.random() * 19),
+  Math.floor(Math.random() * 19),
+  Math.floor(Math.random() * 19),
+];
 
 function Product(name, src) {
   this.name = name;
@@ -38,22 +47,27 @@ new Product('wine-glass', 'img/wine-glass.jpg');
 displayRandomProducts();
 console.log(products);
 
-// creates a 3 random numbers
+// creates 3 random numbers
 function displayRandomProducts() {
   let randomProductIndex1 = Math.floor(Math.random() * products.length);
   let randomProductIndex2 = Math.floor(Math.random() * products.length);
   let randomProductIndex3 = Math.floor(Math.random() * products.length);
 
+  while (checkNumbers(randomProductIndex1)) {
+    randomProductIndex1 = Math.floor(Math.random() * products.length);
+  }
+
   while (
     randomProductIndex2 === randomProductIndex1 ||
-    randomProductIndex2 === randomProductIndex3
+    checkNumbers(randomProductIndex2)
   ) {
     randomProductIndex2 = Math.floor(Math.random() * products.length);
   }
 
   while (
     randomProductIndex3 === randomProductIndex1 ||
-    randomProductIndex3 === randomProductIndex2
+    randomProductIndex3 === randomProductIndex2 ||
+    checkNumbers(randomProductIndex3)
   ) {
     randomProductIndex3 = Math.floor(Math.random() * products.length);
   }
@@ -64,8 +78,24 @@ function displayRandomProducts() {
   image3Element.src = products[randomProductIndex3].src;
   image3Element.alt = products[randomProductIndex3].name;
   products[randomProductIndex1].timesSeen++;
+  console.log(randomProductIndex1);
+  currentNumbers[0] = randomProductIndex1;
   products[randomProductIndex2].timesSeen++;
+  console.log(randomProductIndex2);
+  currentNumbers[1] = randomProductIndex2;
   products[randomProductIndex3].timesSeen++;
+  console.log(randomProductIndex3);
+  currentNumbers[2] = randomProductIndex3; //currentNumbers = [0, 8, 18]
+}
+
+// checks if number is in the currentNumber array
+function checkNumbers(num) {
+  for (let i = 0; i < currentNumbers.length; i++) {
+    if (num === currentNumbers[i]) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // code that runs when a user has voted on a Product
@@ -74,7 +104,7 @@ function handleProductClicks(event) {
     if (products[i].name === event.target.alt) {
       products[i].timesClicked++;
       votes -= 1;
-      console.log(votes);
+      // console.log(votes);
       updateVotes();
     }
   }
@@ -88,42 +118,25 @@ function handleProductClicks(event) {
 
 imageContainer.addEventListener('click', handleProductClicks);
 
-const resultsElement = document.getElementById('results')
-const resultsDiv = document.getElementById('result-div')
-
 // displays the results upon clicking the View Results button
 function displayResults() {
-  for (let i = 0; i < products.length; i++) {
-    let createParaElement = document.createElement('h4');
-    createParaElement.textContent =
-      `${products[i].name} had ${products[i].timesClicked} votes, and was seen ${products[i].timesSeen} times.`;
-    resultsElement.appendChild(createParaElement);
-  }
+  resultsDiv.classList.remove('hide');
   resultsDiv.classList.add('show');
 }
 
-
-const votesElement = document.getElementById('votes-remaining');
-
 // updated the remaining votes depending on the votes variable
 function updateVotes() {
-  return votesElement.textContent = votes;
+  return (votesElement.textContent = votes);
 }
 
 updateVotes();
-
-const resultButton = document.getElementById('result-button');
 
 // handles the hiding and showing div for the results.
 function handleSubmit(event) {
   const clickedButton = event.target.parentNode;
   clickedButton.classList.remove('show');
-  clickedButton.classList.add('hide');
   resultsElement.classList.remove('hide-results');
   resultsElement.classList.add('show-results');
+  createVoteChart();
 }
 resultButton.addEventListener('click', handleSubmit);
-
-
-
-
