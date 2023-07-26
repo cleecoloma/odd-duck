@@ -1,6 +1,6 @@
 'use strict';
 
-const products = [];
+const products = load();
 let votes = 25;
 const image1Element = document.getElementById('image1');
 const image2Element = document.getElementById('image2');
@@ -16,33 +16,13 @@ const currentNumbers = [
   Math.floor(Math.random() * 19),
 ];
 
-function Product(name, src) {
+function Product(name, src, timesClicked = 0, timesSeen = 0) {
   this.name = name;
   this.src = src;
-  this.timesClicked = 0;
-  this.timesSeen = 0;
-  products.push(this);
+  this.timesClicked = timesClicked;
+  this.timesSeen = timesSeen;
+  // products.push(this);
 }
-
-new Product('bag', 'img/bag.jpg');
-new Product('banana', 'img/banana.jpg');
-new Product('bathroom', 'img/bathroom.jpg');
-new Product('boots', 'img/boots.jpg');
-new Product('breakfast', 'img/breakfast.jpg');
-new Product('bubblegum', 'img/bubblegum.jpg');
-new Product('chair', 'img/chair.jpg');
-new Product('cthulhu', 'img/cthulhu.jpg');
-new Product('dog-duck', 'img/dog-duck.jpg');
-new Product('dragon', 'img/dragon.jpg');
-new Product('pen', 'img/pen.jpg');
-new Product('pet-sweep', 'img/pet-sweep.jpg');
-new Product('scissors', 'img/scissors.jpg');
-new Product('shark', 'img/shark.jpg');
-new Product('sweep', 'img/sweep.png');
-new Product('tauntaun', 'img/tauntaun.jpg');
-new Product('unicorn', 'img/unicorn.jpg');
-new Product('water-can', 'img/water-can.jpg');
-new Product('wine-glass', 'img/wine-glass.jpg');
 
 displayRandomProducts();
 console.log(products);
@@ -78,13 +58,13 @@ function displayRandomProducts() {
   image3Element.src = products[randomProductIndex3].src;
   image3Element.alt = products[randomProductIndex3].name;
   products[randomProductIndex1].timesSeen++;
-  console.log(randomProductIndex1);
+  // console.log(randomProductIndex1);
   currentNumbers[0] = randomProductIndex1;
   products[randomProductIndex2].timesSeen++;
-  console.log(randomProductIndex2);
+  // console.log(randomProductIndex2);
   currentNumbers[1] = randomProductIndex2;
   products[randomProductIndex3].timesSeen++;
-  console.log(randomProductIndex3);
+  // console.log(randomProductIndex3);
   currentNumbers[2] = randomProductIndex3; //currentNumbers = [0, 8, 18]
 }
 
@@ -113,6 +93,7 @@ function handleProductClicks(event) {
   if (votes === 0) {
     imageContainer.removeEventListener('click', handleProductClicks);
     displayResults();
+    save();
   }
 }
 
@@ -140,3 +121,38 @@ function handleSubmit(event) {
   createVoteChart();
 }
 resultButton.addEventListener('click', handleSubmit);
+
+// saves the current state of products
+function save() {
+  let saveData = JSON.stringify(products);
+  localStorage.setItem('products', saveData);
+}
+
+// loads data from local storage
+function load() {
+  let chartData = JSON.parse(localStorage.getItem('products'));
+  if (!chartData) {
+    return [
+      new Product('bag', 'img/bag.jpg'),
+      new Product('banana', 'img/banana.jpg'),
+      new Product('bathroom', 'img/bathroom.jpg'),
+      new Product('boots', 'img/boots.jpg'),
+      new Product('breakfast', 'img/breakfast.jpg'),
+      new Product('bubblegum', 'img/bubblegum.jpg'),
+      new Product('chair', 'img/chair.jpg'),
+      new Product('cthulhu', 'img/cthulhu.jpg'),
+      new Product('dog-duck', 'img/dog-duck.jpg'),
+      new Product('dragon', 'img/dragon.jpg'),
+      new Product('pen', 'img/pen.jpg'),
+      new Product('pet-sweep', 'img/pet-sweep.jpg'),
+      new Product('scissors', 'img/scissors.jpg'),
+      new Product('shark', 'img/shark.jpg'),
+      new Product('sweep', 'img/sweep.png'),
+      new Product('tauntaun', 'img/tauntaun.jpg'),
+      new Product('unicorn', 'img/unicorn.jpg'),
+      new Product('water-can', 'img/water-can.jpg'),
+      new Product('wine-glass', 'img/wine-glass.jpg'),
+    ];
+  }
+  return chartData;
+}
