@@ -86,6 +86,7 @@ function handleProductClicks(event) {
       votes -= 1;
       // console.log(votes);
       updateVotes();
+      save();
     }
   }
   // console.log(products);
@@ -93,7 +94,6 @@ function handleProductClicks(event) {
   if (votes === 0) {
     imageContainer.removeEventListener('click', handleProductClicks);
     displayResults();
-    save();
   }
 }
 
