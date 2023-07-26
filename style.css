@@ -1,11 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;700&display=swap');
+
 * {
   max-width: 960px;
   margin: 0 auto;
 }
 
+header {
+  background-color: #85586F;
+  padding: 2rem 0;
+}
+
 header h1 {
   text-align: center;
-  margin: 2rem 0;
+  color: white;
+  font-family: 'Audiowide', cursive;
+  font-size: 250%;
 }
 
 #votes {
@@ -15,9 +24,9 @@ header h1 {
   margin: 2rem auto 5rem;
   padding: 1rem;
   width: 10rem;
-  background-color: green;
+  background-color: #8B7E74;
   color: white;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 #image-container {
@@ -28,8 +37,16 @@ header h1 {
 img {
   width: 320px;
   height: 350px;
-  border: thin solid green;
+  border: thin solid #545B77;
   object-fit: contain;
+}
+
+img:nth-child(1) {
+  border-right-style: none;
+}
+
+img:nth-child(3) {
+  border-left-style: none;
 }
 
 .hide {
