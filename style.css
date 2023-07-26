@@ -69,7 +69,7 @@ img:nth-child(3) {
   align-items: center;
   background-color: hsla(0, 0%, 83%, 0.5);
   position: fixed;
-  top: 15rem;
+  top: 19rem;
 }
 
 #result-button {
@@ -100,7 +100,7 @@ img:nth-child(3) {
   text-align: center;
   background-color: white;
   position: fixed;
-  top: 15rem;
+  top: 19rem;
   z-index: 1;
 }
 
