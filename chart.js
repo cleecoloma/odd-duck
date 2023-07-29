@@ -2,6 +2,7 @@
 
 const chartCanvas = document.getElementById('myChart');
 
+// creates bar chart using results from local storage
 function createVoteChart() {
   const productName = [];
   const totalVotes = [];
